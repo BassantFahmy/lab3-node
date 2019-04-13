@@ -1,0 +1,35 @@
+<h2>users:</h2>
+{{#if title}}
+<table style="width:40%">
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Age</td>
+        <td>Delete</td>
+        <td>Edit</td>
+    </tr>
+    {{#each title}}
+    <tr>
+        <td>{{this.id}}</td>
+        <td>{{this.name}}</td>
+        <td>{{this.age}}</td>
+        <td>
+            <form method="POST" action="/users/{{this.id}}">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+        <td>
+            <form method="GET" action="/edit/{{this.id}}">
+                <button type="submit">Edit</button>
+            </form>
+        </td>
+    </tr>
+    {{/each}}
+</table>
+{{/if}}
+
+<form method="POST" action="/users">
+    <input type='text' name="username" placeholder="add name" />
+    <input type='text' name="useAge" placeholder="add age" />
+    <button type="submit">Add</button>
+</form>
